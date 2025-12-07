@@ -28,6 +28,21 @@ mod my_module {
 
     // TODO: Complete the function as described above.
     // pub fn transformer(input: ???) -> ??? { ??? }
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+        input
+            .into_iter()
+            .map(|(mut s, cmd)| match cmd {
+                Command::Uppercase => s.to_uppercase(),
+                Command::Trim => s.trim().to_string(),
+                Command::Append(n) => {
+                    for _ in 0..n {
+                        s.push_str("bar");
+                    }
+                    s
+                }
+            })
+            .collect()
+    }
 }
 
 fn main() {
@@ -39,6 +54,7 @@ mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
     // use ???;
     use super::Command;
+    use crate::my_module::transformer;
 
     #[test]
     fn it_works() {
@@ -61,3 +77,34 @@ mod tests {
         );
     }
 }
+
+
+/*
+    enums + pattern matching :
+    match cmd {
+    Command::Uppercase => ...
+    Command::Trim => ...
+    Command::Append(n) => ...
+}
+
+    Vec + Iterator + Collect :
+    input
+    .into_iter()
+    .map(...)
+    .collect::<Vec<String>>()
+
+    String API / Return Type :
+    Uppercase	to_uppercase()	String
+    Trim	    trim()	        &str
+    Append	    push_str()	    ()
+
+
+    mutability
+    |(mut s, cmd)|
+
+    use super::Command;
+    เอา Command จาก outer scope , แสดงการอ้าง path ระหว่าง module
+
+
+
+ */
