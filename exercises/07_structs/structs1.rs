@@ -1,9 +1,16 @@
 struct ColorRegularStruct {
     // TODO: Add the fields that the test `regular_structs` expects.
     // What types should the fields have? What are the minimum and maximum values for RGB colors?
+
+    //
+    red: u8,
+    green: u8,
+    blue: u8,
 }
 
-struct ColorTupleStruct(/* TODO: Add the fields that the test `tuple_structs` expects */);
+
+struct ColorTupleStruct(u8, u8, u8);
+// struct ColorTupleStruct(/* TODO: Add the fields that the test `tuple_structs` expects */);
 
 #[derive(Debug)]
 struct UnitStruct;
@@ -21,6 +28,12 @@ mod tests {
         // TODO: Instantiate a regular struct.
         // let green =
 
+        let green = ColorRegularStruct {
+            red: 0,
+            green: 255,
+            blue: 0,
+        };
+
         assert_eq!(green.red, 0);
         assert_eq!(green.green, 255);
         assert_eq!(green.blue, 0);
@@ -31,6 +44,8 @@ mod tests {
         // TODO: Instantiate a tuple struct.
         // let green =
 
+        let green = ColorTupleStruct(0, 255, 0);
+
         assert_eq!(green.0, 0);
         assert_eq!(green.1, 255);
         assert_eq!(green.2, 0);
@@ -40,8 +55,37 @@ mod tests {
     fn unit_structs() {
         // TODO: Instantiate a unit struct.
         // let unit_struct =
+
+        let unit_struct = UnitStruct;
         let message = format!("{unit_struct:?}s are fun!");
 
         assert_eq!(message, "UnitStructs are fun!");
     }
 }
+
+
+/*
+    u8 เก็บได้พอดี (0 ถึง 255), ประหยัด memory + semantic
+
++------------------+------------------------------+---------------------------+----------------------------+
+| Struct Type      | Definition                   | Instantiation             | Access                     |
++------------------+------------------------------+---------------------------+----------------------------+
+| Regular Struct   | struct Color {               | let c = Color {           | c.red                      |
+|                  |     red: u8,                 |     red: 0,               | c.green                    |
+|                  |     green: u8,               |     green: 255,           | c.blue                     |
+|                  |     blue: u8,                |     blue: 0,              |                            |
+|                  | }                            | };                        |                            |
++------------------+------------------------------+---------------------------+----------------------------+
+| Tuple Struct     | struct Color(u8, u8, u8);    | let c = Color(0, 255, 0); | c.0                        |
+|                  |                              |                           | c.1                        |
+|                  |                              |                           | c.2                        |
++------------------+------------------------------+---------------------------+----------------------------+
+| Unit Struct      | struct UnitStruct;           | let u = UnitStruct;       | No fields to access        |
++------------------+------------------------------+---------------------------+----------------------------+
+
+Regular struct → meaning per field
+Tuple struct   → meaning per group
+Unit struct    → meaning per type
+
+
+ */

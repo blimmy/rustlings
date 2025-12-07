@@ -2,6 +2,8 @@ fn main() {
     // TODO: Create an array called `a` with at least 100 elements in it.
     // let a = ???
 
+    let a = [0; 100];
+
     if a.len() >= 100 {
         println!("Wow, that's a big array!");
     } else {
@@ -9,3 +11,12 @@ fn main() {
         panic!("Array not big enough, more elements needed");
     }
 }
+
+
+/*
+
+    let a = [0; 100];
+    // let a = [0, 0, 0, 0, 0, 0, /* ... */ 0];
+    build 100 arrays and it is 0 each
+
+ */

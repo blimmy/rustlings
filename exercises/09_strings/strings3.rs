@@ -1,13 +1,19 @@
+use std::mem::replace;
+
 fn trim_me(input: &str) -> &str {
     // TODO: Remove whitespace from both ends of a string.
+    input.trim()
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There are multiple ways to do this.
+    format!("{input} world!")
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons".
+    input.replace("cars", "balloons")
+
 }
 
 fn main() {
@@ -44,3 +50,23 @@ mod tests {
         );
     }
 }
+
+
+/*
+    type:
+    fn trim_me(input: &str) -> &str { return &str
+    fn compose_me(input: &str) -> String { return new string = return String
+    fn replace_me(input: &str) -> String { return String
+
+    what does it do
+    trim -> use input.trim()
+    compose_me
+        there are two ways
+        01 format!("{input} world!")
+        02 let mut s = input.to_string();
+            s.push_str(" world!");
+            s
+
+        03 input.replace("cars", "balloons")
+
+ */

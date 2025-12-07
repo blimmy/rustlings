@@ -17,6 +17,7 @@ fn main() {
     // Try a letter, try a digit (in single quotes), try a special character, try a character
     // from a different language than your own, try an emoji 😉
     // let your_character = '';
+    let your_character = 'ป';
 
     if your_character.is_alphabetic() {
         println!("Alphabetical!");
@@ -26,3 +27,15 @@ fn main() {
         println!("Neither alphabetic nor numeric!");
     }
 }
+
+/*
+
+- what i see is the type is changing
+single quotes -> char
+double quotes -> &str
+
+- emoji -> Neither alphabetic nor numeric!
+- work on ø , 中 its says = alphabet woww
+
+
+ */

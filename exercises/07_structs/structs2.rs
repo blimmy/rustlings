@@ -36,6 +36,14 @@ mod tests {
         // TODO: Create your own order using the update syntax and template above!
         // let your_order =
 
+        let your_order = Order {
+            name: String::from("Hacker in Rust"),
+            count: 1,
+            ..order_template
+        };
+
+
+
         assert_eq!(your_order.name, "Hacker in Rust");
         assert_eq!(your_order.year, order_template.year);
         assert_eq!(your_order.made_by_phone, order_template.made_by_phone);
@@ -45,3 +53,21 @@ mod tests {
         assert_eq!(your_order.count, 1);
     }
 }
+
+/*
+    from the original struct = string name = bob . and the num count is 0
+    we can use this to change
+
+    let your_order = Order {
+            name: String::from("Hacker in Rust"),
+            count: 1,
+            ..order_template
+        };
+
+
+        use your_order ( from the tests name so its the order name
+        and change the name and count
+        and if we wnt the rest of it to stay the same
+        use ..order_template
+
+ */

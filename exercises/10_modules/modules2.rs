@@ -3,8 +3,9 @@
 
 mod delicious_snacks {
     // TODO: Add the following two `use` statements after fixing them.
-    // use self::fruits::PEAR as ???;
-    // use self::veggies::CUCUMBER as ???;
+
+    pub use self::fruits::PEAR as fruit;
+    pub use self::veggies::CUCUMBER as veggie;
 
     mod fruits {
         pub const PEAR: &str = "Pear";
@@ -24,3 +25,14 @@ fn main() {
         delicious_snacks::veggie,
     );
 }
+
+
+/*
+    adding that two statement for
+    use ... as ... = เอาของจากที่ลึก ๆ มาตั้งชื่อใหม่
+
+    this is the old version bf changing
+    use self::fruits::PEAR as ???;
+    use self::veggies::CUCUMBER as ???;
+
+ */
