@@ -8,7 +8,7 @@ fn is_even(num: i64) -> bool {
 }
 
 // TODO: Fix the function signature.
-fn sale_price(price: i64) -> {
+fn sale_price(price: i64) -> i64{
     if is_even(price) {
         price - 10
     } else {
@@ -20,3 +20,27 @@ fn main() {
     let original_price = 51;
     println!("Your sale price is {}", sale_price(original_price));
 }
+
+
+/*
+    fill the return type
+    fn sale_price(price: i64) -> i64{
+
+    +------+------------+--------------------------------------------+-------------------------------------------+
+| Type | Size       | Typical Use Cases                           | Example                                   |
++------+------------+--------------------------------------------+-------------------------------------------+
+| i32  | 4 bytes    | - Default integer type                     | let x = 10;                               |
+|      |            | - Array indices                            |                                           |
+|      |            | - Counters & loop variables                |                                           |
+|      |            | - Most algorithms                          |                                           |
+|      |            | - Faster, cache-friendly                   |                                           |
++------+------------+--------------------------------------------+-------------------------------------------+
+| i64  | 8 bytes    | - Large numbers                            | let timestamp: i64 = 1_696_000_000;       |
+|      |            | - Timestamps (Unix time)                  |                                           |
+|      |            | - File sizes                               |                                           |
+|      |            | - Financial / scientific data              |                                           |
+|      |            | - Larger range, more memory                |                                           |
++------+------------+--------------------------------------------+-------------------------------------------+
+
+
+ */

@@ -4,7 +4,25 @@ fn bigger(a: i32, b: i32) -> i32 {
     // Do not use:
     // - another function call
     // - additional variables
+
+
+    if a > b { a } else if b > a { b }
+    else { a }
 }
+
+/*
+    how to use if-else : if ____ { ___}
+    else if **must hv the statement {} , else {}
+
+
+    tip : if we hv return, no ;
+    return hv to be with the semicolon (;)
+
+ */
+
+
+
+
 
 fn main() {
     // You can optionally experiment here.

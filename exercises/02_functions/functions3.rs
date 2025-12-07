@@ -6,5 +6,10 @@ fn call_me(num: u8) {
 
 fn main() {
     // TODO: Fix the function call.
-    call_me();
+    call_me(5);
 }
+
+
+/*
+    just fill in the main func
+ */
