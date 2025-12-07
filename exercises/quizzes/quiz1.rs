@@ -12,6 +12,19 @@
 // the quantity bought.
 // fn calculate_price_of_apples(???) -> ??? { ??? }
 
+
+fn calculate_price_of_apples(apl: i32) -> i32{
+    let cost: i32;
+
+    if apl > 40 {
+        cost = apl * 1;
+    } else {
+        cost = apl * 2;
+    }
+
+    cost
+}
+
 fn main() {
     // You can optionally experiment here.
 }
@@ -29,3 +42,9 @@ mod tests {
         assert_eq!(calculate_price_of_apples(65), 65);
     }
 }
+
+
+/*
+    note, no mut if we know that we will not vhnag rthe value
+    later and i hv to fill the type i32 
+ */
