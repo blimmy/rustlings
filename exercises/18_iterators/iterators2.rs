@@ -7,7 +7,10 @@ fn capitalize_first(input: &str) -> String {
     let mut chars = input.chars();
     match chars.next() {
         None => String::new(),
-        Some(first) => todo!(),
+        // Some(first) => todo!(),
+        Some(first) => {
+            first.to_uppercase().collect::<String>() + chars.as_str()
+        }
     }
 }
 
@@ -16,6 +19,7 @@ fn capitalize_first(input: &str) -> String {
 // ["hello", "world"] -> ["Hello", "World"]
 fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
     // ???
+    words.iter().map(|w| capitalize_first(w)).collect()
 }
 
 // TODO: Apply the `capitalize_first` function again to a slice of string
@@ -23,6 +27,7 @@ fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
 // ["hello", " ", "world"] -> "Hello World"
 fn capitalize_words_string(words: &[&str]) -> String {
     // ???
+    words.iter().map(|w| capitalize_first(w)).collect::<Vec<_>>().join("")
 }
 
 fn main() {
@@ -55,3 +60,19 @@ mod tests {
         assert_eq!(capitalize_words_string(&words), "Hello World");
     }
 }
+
+
+/*
+
+    first.to_uppercase().collect::<String>() + chars.as_str()
+
+    SOURCE ──> TRANSFORM ──> COLLECT
+    : words.iter().map(|w| capitalize_first(w)).collect()
+
+    to a slice of string slices, use ::<Vec<_>>().join("")
+    : words.iter().map(|w| capitalize_first(w)).collect::<Vec<_>>().join("")
+
+    .join("") = เป็น method ของ Vec<String> และ Vec<&str> เอา element ทุกตัวมาต่อกัน
+คั่นด้วย string ที่ให้
+
+ */

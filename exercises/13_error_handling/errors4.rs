@@ -11,7 +11,13 @@ impl PositiveNonzeroInteger {
     fn new(value: i64) -> Result<Self, CreationError> {
         // TODO: This function shouldn't always return an `Ok`.
         // Read the tests below to clarify what should be returned.
-        Ok(Self(value as u64))
+        if value < 0 {
+            Err(CreationError::Negative)
+        } else if value == 0 {
+            Err(CreationError::Zero)
+        } else {
+            Ok(Self(value as u64))
+        }
     }
 }
 
@@ -36,3 +42,16 @@ mod tests {
         assert_eq!(PositiveNonzeroInteger::new(0), Err(CreationError::Zero));
     }
 }
+
+/*
+    do if-else but for PositiveNonzeroInteger
+    - be the pos int
+    - not neg
+
+     Err(CreationError::____)
+     -  Err(CreationError::Negative)
+     - Err(CreationError::Zero)
+
+     if ok ?? -> Ok(Self(value as u64))
+
+ */

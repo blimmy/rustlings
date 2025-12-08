@@ -10,7 +10,10 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+
+    (1..=num).product()
 }
+
 
 fn main() {
     // You can optionally experiment here.
@@ -39,3 +42,9 @@ mod tests {
         assert_eq!(factorial(4), 24);
     }
 }
+
+/*
+    (1..=num) is defined as `1 * 2 * 3 * … * num`
+    .product for multiple tgt
+ 
+ */

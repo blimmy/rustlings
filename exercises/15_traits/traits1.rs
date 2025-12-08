@@ -6,6 +6,10 @@ trait AppendBar {
 
 impl AppendBar for String {
     // TODO: Implement `AppendBar` for the type `String`.
+    fn append_bar(mut self) -> Self {
+        self.push_str("Bar");
+        self
+    }
 }
 
 fn main() {
@@ -28,3 +32,8 @@ mod tests {
         assert_eq!(String::from("").append_bar().append_bar(), "BarBar");
     }
 }
+
+/*
+    implemment from trait fn append_bar(self) -> Self;
+    leaw push into it
+ */

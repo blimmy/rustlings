@@ -4,12 +4,14 @@
 // construct to `Option` that can be used to express error conditions. Change
 // the function signature and body to return `Result<String, String>` instead
 // of `Option<String>`.
-fn generate_nametag_text(name: String) -> Option<String> {
+fn generate_nametag_text(name: String) -> Result<String, String> {
     if name.is_empty() {
         // Empty names aren't allowed
-        None
+        // None
+
+        Err("Empty names aren't allowed".to_string())
     } else {
-        Some(format!("Hi! My name is {name}"))
+        Ok(format!("Hi! My name is {name}"))
     }
 }
 
@@ -39,3 +41,14 @@ mod tests {
         );
     }
 }
+
+
+/*
+    How to change from option to the error thing
+    - change the -> Option<String> to -> Result<String, String>
+    - in the if-else section do
+    01 Err("whatwhatwhat".to_string()) ( mee to string duay )
+    or u wanna use format like this Ok(format!("Hi! My name is {name}"))
+
+
+ */

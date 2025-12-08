@@ -3,7 +3,11 @@ trait Licensed {
     // implementors like the two structs below can share that default behavior
     // without repeating the function.
     // The default license information should be the string "Default license".
-    fn licensing_info(&self) -> String;
+    // fn licensing_info(&self) -> String;
+
+    fn licensing_info(&self) -> String {
+        String::from("Default license")
+    }
 }
 
 struct SomeSoftware {
@@ -36,3 +40,26 @@ mod tests {
         assert_eq!(other_software.licensing_info(), licensing_info);
     }
 }
+
+/*
+
+    jing jing it hv to be like this :
+
+    impl Licensed for SomeSoftware {
+    fn licensing_info(&self) -> String {
+        String::from("Default license")
+    }
+}
+
+impl Licensed for OtherSoftware {
+    fn licensing_info(&self) -> String {
+        String::from("Default license")
+    }
+}
+
+    nut we implement once in trait
+    fn licensing_info(&self) -> String {
+        String::from("Default license")
+    }
+
+ */

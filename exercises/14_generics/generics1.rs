@@ -6,7 +6,7 @@ fn main() {
     // TODO: Fix the compiler error by annotating the type of the vector
     // `Vec<T>`. Choose `T` as some integer type that can be created from
     // `u8` and `i8`.
-    let mut numbers = Vec::new();
+    let mut numbers:Vec<i16> = Vec::new();
 
     // Don't change the lines below.
     let n1: u8 = 42;
@@ -16,3 +16,15 @@ fn main() {
 
     println!("{numbers:?}");
 }
+
+/*
+
+ตัวเลือก	เหตุผล
+u8	- รับ i8 ติดลบไม่ได้
+i8	- อาจ overflow u8
+u16	-  รับค่าติดลบไม่ได้
+i16	- ครอบทั้ง 42 และ -1
+i32	yes
+i64	yes
+
+ */

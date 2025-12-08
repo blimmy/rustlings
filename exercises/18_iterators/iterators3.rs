@@ -8,24 +8,37 @@ enum DivisionError {
     NotDivisible,
 }
 
-// TODO: Calculate `a` divided by `b` if `a` is evenly divisible by `b`.
-// Otherwise, return a suitable error.
 fn divide(a: i64, b: i64) -> Result<i64, DivisionError> {
-    todo!();
+    if b == 0 {
+        return Err(DivisionError::DivideByZero);
+    }
+
+    if a == i64::MIN && b == -1 {
+        return Err(DivisionError::IntegerOverflow);
+    }
+
+    if a % b != 0 {
+        return Err(DivisionError::NotDivisible);
+    }
+
+    Ok(a / b)
 }
 
-// TODO: Add the correct return type and complete the function body.
-// Desired output: `Ok([1, 11, 1426, 3])`
-fn result_with_list() {
+fn result_with_list() -> Result<Vec<i64>, DivisionError> {
+    //                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     let numbers = [27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
+    // Collects to the expected return type. Returns the first error in the
+    // division results (if one exists).
+    division_results.collect()
 }
 
-// TODO: Add the correct return type and complete the function body.
-// Desired output: `[Ok(1), Ok(11), Ok(1426), Ok(3)]`
-fn list_of_results() {
+fn list_of_results() -> Vec<Result<i64, DivisionError>> {
+    //               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     let numbers = [27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
+    // Collects to the expected return type.
+    division_results.collect()
 }
 
 fn main() {
@@ -73,3 +86,20 @@ mod tests {
         assert_eq!(list_of_results(), [Ok(1), Ok(11), Ok(1426), Ok(3)]);
     }
 }
+
+
+/*
+    Return type :
+        - Result<Vec<T>, E> = ถ้ามี error ตัวใดตัวหนึ่ง → หยุดทันที
+        - Vec<Result<T, E>> = เก็บผลลัพธ์ของทุกอัน ไม่ว่าจะสำเร็จหรือพัง
+
++-----------------+----------------------+-------------------------------+
+| iterator item   | collect เป็น         | ความหมาย                      |
++-----------------+----------------------+-------------------------------+
+| Result<T, E>    | Result<Vec<T>, E>    | fail fast (เจอ Err แล้วหยุด) |
+| Result<T, E>    | Vec<Result<T, E>>    | keep all (เก็บทุกผลลัพธ์)    |
+| Option<T>       | Option<Vec<T>>       | None = stop (เจอ None หยุด)  |
++-----------------+----------------------+-------------------------------+
+
+
+ */
